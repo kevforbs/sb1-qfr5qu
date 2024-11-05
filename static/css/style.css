@@ -1,0 +1,398 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #64B5F6 #E3F2FD;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #E3F2FD;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #64B5F6;
+    border-radius: 4px;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #E3F2FD;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 80px;
+    background-color: #ffffff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caption {
+    color: #64B5F6;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.nav-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #64B5F6;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-icon:hover {
+    background-color: #E3F2FD;
+    color: #2196F3;
+}
+
+.nav-icon.active {
+    background-color: #2196F3;
+    color: white;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+
+.page {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
+}
+
+.page.active {
+    display: block;
+}
+
+.todo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    height: 100%;
+}
+
+.todo-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.todo-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2196F3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.todo-button:hover {
+    background-color: #1976D2;
+}
+
+.todo-button.edit-btn {
+    margin-bottom: 15px;
+}
+
+.todo-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.todo-section {
+    margin-bottom: 30px;
+}
+
+.todo-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.todo-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.todo-item.overdue {
+    background-color: #FFE0B2;
+}
+
+.todo-item.pending {
+    background-color: #E3F2FD;
+}
+
+.todo-item.done {
+    background-color: #f5f5f5;
+}
+
+.todo-checkbox {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.todo-content {
+    flex-grow: 1;
+}
+
+.todo-item-title {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.todo-item-date {
+    font-size: 12px;
+    color: #666;
+}
+
+.todo-email {
+    color: #333;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.todo-right-column {
+    background-color: #F5F9FF;
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 500px;
+}
+
+.todo-details {
+    padding: 20px;
+}
+
+.details-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.details-title {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.details-row {
+    margin-bottom: 15px;
+}
+
+.details-row label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+    font-weight: 500;
+}
+
+.details-row.time-row {
+    display: flex;
+    gap: 10px;
+}
+
+.details-row.time-row .time-input-group {
+    flex: 1;
+}
+
+.details-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+}
+
+.details-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    font-size: 14px;
+    background-color: #f8f9fa;
+}
+
+.details-email {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.details-email i {
+    font-size: 48px;
+    color: #333;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.details-email i:hover {
+    background-color: #E3F2FD;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-container {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.popup-type-select {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.popup-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.popup-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.popup-button.cancel {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.popup-button.save {
+    background: #2196F3;
+    color: white;
+}
+
+.popup-button:hover {
+    opacity: 0.9;
+}
+
+.popup-row {
+    margin-bottom: 16px;
+}
+
+.popup-label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.popup-field {
+    width: 100%;
+}
+
+.popup-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.popup-textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 14px;
+}
+
+.time-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-range span {
+    color: #333;
+    padding: 0 5px;
+}

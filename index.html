@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="caption">MENU</div>
+        <div class="nav-icons">
+            <div class="nav-icon active" data-page="todo">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="nav-icon" data-page="calendar">
+                <i class="far fa-calendar"></i>
+            </div>
+            <div class="nav-icon" data-page="contacts">
+                <i class="far fa-address-book"></i>
+            </div>
+            <div class="nav-icon" data-page="messages">
+                <i class="far fa-envelope"></i>
+            </div>
+            <div class="nav-icon" data-page="home">
+                <i class="fas fa-home"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="page active" id="todo">
+            <div class="todo-container">
+                <div class="todo-left">
+                    <div class="todo-header">
+                    </div>
+                    <div class="todo-section">
+                        <div class="todo-title">To Do</div>
+                        <div class="todo-list" id="todoList">
+                        </div>
+                    </div>
+                    <div class="todo-section">
+                        <div class="todo-title">Done</div>
+                        <div class="todo-list" id="doneList">
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-right">
+                    <div class="todo-header">
+                        <div class="todo-actions">
+                            <button class="todo-button" onclick="todoApp.openPopup()">+</button>
+                            <button class="todo-button" id="updateButton">Update</button>
+                            <span class="todo-date" id="currentDate"></span>
+                        </div>
+                    </div>
+                    <div class="todo-right-column" id="todoDetails">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="calendar">
+            <h1>Calendar</h1>
+            <p>Your schedule and events will appear here.</p>
+        </div>
+        <div class="page" id="contacts">
+            <h1>Contacts</h1>
+            <p>Your contacts and connections will appear here.</p>
+        </div>
+        <div class="page" id="messages">
+            <h1>Messages</h1>
+            <p>Your messages and communications will appear here.</p>
+        </div>
+        <div class="page" id="home">
+            <h1>Home</h1>
+            <p>Welcome to your dashboard home page.</p>
+        </div>
+    </div>
+
+    <!-- Edit/Add Task Popup -->
+    <div class="popup-overlay" id="taskPopup">
+        <div class="popup-container">
+            <div class="popup-header">
+                <select class="popup-type-select" id="taskType">
+                    <option value="todo">To Do</option>
+                    <option value="calendar">Calendar</option>
+                </select>
+                <div class="popup-buttons">
+                    <button class="popup-button cancel" onclick="todoApp.closePopup()">Cancel</button>
+                    <button class="popup-button save" onclick="todoApp.saveTask()">Save</button>
+                </div>
+            </div>
+            <input type="hidden" id="taskId">
+            <input type="hidden" id="isEditMode">
+            <div class="popup-row">
+                <div class="popup-label">Title:</div>
+                <div class="popup-field">
+                    <input type="text" class="popup-input" id="taskTitle">
+                </div>
+            </div>
+            <div class="popup-row">
+                <div class="popup-label">Time:</div>
+                <div class="popup-field time-range">
+                    <input type="datetime-local" class="popup-input" id="taskTimeFrom">
+                    <span>to</span>
+                    <input type="datetime-local" class="popup-input" id="taskTimeTo">
+                </div>
+            </div>
+            <div class="popup-row">
+                <div class="popup-label">Place:</div>
+                <div class="popup-field">
+                    <input type="text" class="popup-input" id="taskPlace">
+                </div>
+            </div>
+            <div class="popup-row">
+                <div class="popup-label">Link:</div>
+                <div class="popup-field">
+                    <input type="text" class="popup-input" id="taskLink">
+                </div>
+            </div>
+            <div class="popup-row">
+                <div class="popup-label">Contents:</div>
+                <div class="popup-field">
+                    <textarea class="popup-textarea" id="taskContents"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from './js/app.js';
+        window.todoApp = await initializeApp();
+    </script>
+</body>
+</html>
